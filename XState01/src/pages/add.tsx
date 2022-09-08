@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import { ComponentProps } from "react";
-import { useStore } from "src/state";
 
-const Add: NextPage = () => {
-  const addTodo = useStore((state) => state.addTodo);
+type Props = {
+  addTodo: (text: string) => void;
+};
 
+const Add: NextPage<Props> = ({ addTodo }) => {
   const handleSubmit: ComponentProps<"form">["onSubmit"] = (event) => {
     event.preventDefault();
-    const text = event.currentTarget.text.value;
+    const text: string = event.currentTarget.text.value;
     addTodo(text);
     event.currentTarget.reset();
   };

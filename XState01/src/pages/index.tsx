@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
-import { useStore } from "src/state/todos";
+import { Todo } from "src/types";
 
-const Home: NextPage = () => {
-  const todos = useStore((state) => state.todos);
-  const toggleTodo = useStore((state) => state.toggleTodo);
+type Props = {
+  todos: Todo[];
+  toggleTodo: (todo: Todo) => void;
+};
 
+const Home: NextPage<Props> = ({ todos, toggleTodo }) => {
   return (
     <div>
       <h3>TODO一覧</h3>
@@ -14,7 +16,7 @@ const Home: NextPage = () => {
             <input
               type="checkbox"
               checked={todo.isDone}
-              onChange={() => toggleTodo(todo.id)}
+              onChange={() => toggleTodo(todo)}
               style={{ width: "1.5rem", height: "1.5rem" }}
             />
             {todo.text}

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { TodoCounter } from "src/components/TodoCounter";
-
+import { TodoCounter } from "./TodoCounter";
 
 export const Header: FC = () => {
   return (
@@ -19,7 +18,8 @@ export const Header: FC = () => {
           <a>TODO追加</a>
         </Link>
       </nav>
-      <TodoCounter/>
+
+      <TodoCounter />
     </header>
   );
 };
